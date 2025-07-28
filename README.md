@@ -64,7 +64,7 @@ Make sure you have Java and Maven installed.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/todo-challenge.git
+git clone https://github.com/BhumikaVaghasiya06/todo-challenge.git
 cd todo-challenge
 ```
 
