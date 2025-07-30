@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todo List</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<h1>Todo List</h1>
+<form method="post" action="/add">
+    <input type="text" name="task" id="task-input" placeholder="Enter a task" />
+    <button type="submit" id="add-button">Add Task</button>
+</form>
+<div th:if="${error}" style="color: red;" class="error-message">
+    <p th:text="${error}"></p>
+</div>
+<ul id="task-list">
+    <li th:each="task, iter : ${tasks}" th:class="${task.completed} ? 'completed'">
+        <form method="post" action="/toggle" style="display: inline;">
+            <input type="hidden" name="index" th:value="${iter.index}" />
+            <input type="checkbox" th:checked="${task.completed}" onclick="this.form.submit()" />
+        </form>
+        <span th:text="${task.description}"></span>
+        <form method="post" action="/delete" style="display: inline;">
+            <input type="hidden" name="index" th:value="${iter.index}" />
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+</body>
+</html>
